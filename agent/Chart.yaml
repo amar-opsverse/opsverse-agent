@@ -1,0 +1,7 @@
+apiVersion: v2
+name: opverse-agent
+version: 0.1.0
+dependencies:
+  - name: observe-agent
+    version: 0.1.82
+    repository: "https://registry.devopsnow.io/chartrepo/public"
