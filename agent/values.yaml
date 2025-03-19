@@ -1,4 +1,4 @@
-agent:
+observe-agent:
   cluster_name: minikube-amar
   logs:
     host: logs-acme-orion.int.devopsnow.io
