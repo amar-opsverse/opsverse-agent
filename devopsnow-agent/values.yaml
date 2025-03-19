@@ -1,0 +1,38 @@
+observe-agent:
+  cluster_name: minikube-amar
+
+  victoria-metrics-agent:
+    enabled: true
+    config:
+      global:
+        scrape_interval: 30s
+    persistence:
+      enabled: false
+    rbac:
+      pspEnabled: false
+    remoteWriteUrls:
+      - https://metrics-acme-orion.int.devopsnow.io/api/v1/write
+    extraArgs:
+      remoteWrite.basicAuth.username: devopsnow
+      remoteWrite.basicAuth.password: chang3me
+      remoteWrite.label: cluster=minikube-amar
+
+  kubestatemetrics:
+    rbac:
+      pspEnabled: false
+
+  logs:
+    host: logs-acme-orion.int.devopsnow.io
+    username: devopsnow
+    password: chang3me
+    multiline:
+      snippet: |
+        - multiline:
+            firstline: '^\d{2,4}\-\d{2,4}\-\d{2,4} \d{2,4}\:\d{2,4}\:\d{2,4}\.\d{1,6}'
+            max_lines: 200
+
+  otelcollector:
+    enabled: true
+    jaeger:
+      url: "https://traces-collector-acme-orion.int.devopsnow.io/api/v2/spans"
+      auth: "Basic ZGV2b3Bzbm93OmNoYW5nM21l"

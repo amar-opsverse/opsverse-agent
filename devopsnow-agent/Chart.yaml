@@ -1,0 +1,8 @@
+apiVersion: v2
+name: devopsnow-agent
+description: Chart for devopsnow-agent from DevOpsNow
+version: 0.0.4
+dependencies:
+- name: observe-agent
+  version: 0.1.82
+  repository: https://registry.devopsnow.io/chartrepo/public
