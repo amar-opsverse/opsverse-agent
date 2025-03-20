@@ -6,7 +6,7 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: devopsnow
+  project: default
   source:
     repoURL: https://github.com/amar-opsverse/opsverse-agent.git
     targetRevision: HEAD
@@ -32,3 +32,4 @@ spec:
         duration: 5s
         factor: 2
         maxDuration: 3m
+

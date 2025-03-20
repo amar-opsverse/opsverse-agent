@@ -12,16 +12,16 @@ observe-agent:
         remoteWriteUrls:
             - https://metrics-acme-orion.int.devopsnow.io/api/v1/write
         extraArgs:
-            remoteWrite.basicAuth.username: ENC[AES256_GCM,data:xibvLjiNLZgY,iv:on78Qj2n4xmuls8rjAAkIFYcQc3Cn2AIZqi9dLy4bSE=,tag:vlt5+TYVBbZumfLLLW283Q==,type:str]
-            remoteWrite.basicAuth.password: ENC[AES256_GCM,data:2PypqFLJE7o=,iv:hHHqYs2H/NVb3bszPelqKsIbQplIja5jFhgocHEPB2Y=,tag:sEWDC73fT5uNz5bBEJ7uHw==,type:str]
+            remoteWrite.basicAuth.username: devopsnow
+            remoteWrite.basicAuth.password: <avp.aws.secretsmanager:devopsnow/credentials#metrics_password>
             remoteWrite.label: cluster=minikube-amar
     kubestatemetrics:
         rbac:
             pspEnabled: false
     logs:
         host: logs-acme-orion.int.devopsnow.io
-        username: ENC[AES256_GCM,data:11PQ9R+5GB3H,iv:Qow1SGem9uBswH+shLPm+bMuyuck6pJ1vGTxmMRQnn8=,tag:Zi7yaxOzy03WmeVwyVVYrA==,type:str]
-        password: ENC[AES256_GCM,data:bFfBZeITopM=,iv:AwM4orulCF8AVV+Y78g42qxcbTgzvjFc8770EP26WGc=,tag:BGKLyyhdMT1rfvzIslXMfg==,type:str]
+        username: devopsnow
+        password: <avp.aws.secretsmanager:devopsnow/credentials#logs_password>
         multiline:
             snippet: |
                 - multiline:
@@ -31,19 +31,4 @@ observe-agent:
         enabled: true
         jaeger:
             url: https://traces-collector-acme-orion.int.devopsnow.io/api/v2/spans
-            auth: ENC[AES256_GCM,data:V2VG+otQ/9KId8rz+ZthSOcJMbZ5A/3pvi29/RU5,iv:7/LMComvGA927qO6hq+R99zb3GNF/O/LkNNRmOQR5F0=,tag:Tcfqf7K4M/lg7+Gng5cebA==,type:str]
-sops:
-    kms:
-        - arn: arn:aws:kms:us-east-1:267336882952:key/c3ad7079-ce84-49f8-8ac1-9c12c472e327
-          created_at: "2025-03-20T07:59:41Z"
-          enc: AQICAHgxHPcWQsO2K/azHszTsK70fEkqwwCJYK4KDSUBkYJGkwGwSKoVOmS1zC4DZDSagsUrAAAAfjB8BgkqhkiG9w0BBwagbzBtAgEAMGgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMryPzNywTfeUsZ/C5AgEQgDsJC5kgbDroroa9hwJLzyuEwhikQ1kWe+vKnTYC3VAPYMQNSJLtcSrzPUUAeA0CNTNc7bArUrG1zth1sg==
-          aws_profile: ""
-    gcp_kms: []
-    azure_kv: []
-    hc_vault: []
-    age: []
-    lastmodified: "2025-03-20T07:59:42Z"
-    mac: ENC[AES256_GCM,data:/dKfZArlIZsNM1N/eOB3IZvey1T2XRVgwaBBCw4OZL6MfuiO6RUtF2Qh6Uwevmiay+HQaQaZe84vhBs1yWiIo3QzZrKAFuwVi+ZYszcE1oOdR0DkaMQ6k/qDrPa/MsEG/BEOShBmWCZXYl7nwlW9uwrWmm8//TW0pPwLB9FvYfU=,iv:834rFiUsnyhSajcejN8Y836G8KUJWZUiQbyZeAkoHjs=,tag:9WMprSgYBkzYO2owiuUQPg==,type:str]
-    pgp: []
-    encrypted_regex: (remoteWrite\.basicAuth\.username|remoteWrite\.basicAuth\.password|username|password|auth)
-    version: 3.9.4
+            auth: Basic ZGV2b3Bzbm93OjxhdnAuYXdzLnNlY3JldHNtYW5hZ2VyOmRldm9wc25vdy9jcmVkZW50aWFscyNsb2dzX3Bhc3N3b3JkPg==
