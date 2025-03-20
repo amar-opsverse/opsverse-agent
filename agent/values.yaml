@@ -12,16 +12,16 @@ observe-agent:
         remoteWriteUrls:
             - https://metrics-acme-orion.int.devopsnow.io/api/v1/write
         extraArgs:
-            remoteWrite.basicAuth.username: devopsnow
-            remoteWrite.basicAuth.password: chang3me
+            remoteWrite.basicAuth.username: ENC[AES256_GCM,data:HKs3q7mkB9vt,iv:WNEOUYjNupugRaiNFGzQ6H39n+G3sPERmtZ5ql/3Qv0=,tag:WnxHEOlBNe+6useMViBsOg==,type:str]
+            remoteWrite.basicAuth.password: ENC[AES256_GCM,data:31bE/dbKIMU=,iv:lBvQOSi+q5iKFTwkacJeY18XIF4E1YMazRCTC3nXkWg=,tag:F7mAsfi4cPlknLZfNL8q1A==,type:str]
             remoteWrite.label: cluster=minikube-amar
     kubestatemetrics:
         rbac:
             pspEnabled: false
     logs:
         host: logs-acme-orion.int.devopsnow.io
-        username: devopsnow
-        password: chang3me
+        username: ENC[AES256_GCM,data:GByllJMqrcnY,iv:kXlzRbTAPattbQPQtYdpNGZllcIHtRB4RRGIDkuiRgs=,tag:HjWzq9EatwJhN4GsLxXK7A==,type:str]
+        password: ENC[AES256_GCM,data:PMzGxzhp8CI=,iv:mPoqheimpSVRMlIMyeyUF/3CAJiWXo9HSO52PpJ6oAA=,tag:yws2TqQreqMoG3dfsRdA5w==,type:str]
         multiline:
             snippet: |
                 - multiline:
@@ -31,4 +31,19 @@ observe-agent:
         enabled: true
         jaeger:
             url: https://traces-collector-acme-orion.int.devopsnow.io/api/v2/spans
-            auth: Basic ZGV2b3Bzbm93OmNoYW5nM21l
+            auth: ENC[AES256_GCM,data:4M3Jth+H2fz7V558w+LeGTSTUfK0VOy8mwT0kSis,iv:ftnUYKlGv5IOXGTAOpAmHffsOEJukcfGcW1uL5ds15I=,tag:nCotgc1xNvOf44AOUmrxOQ==,type:str]
+sops:
+    kms:
+        - arn: arn:aws:kms:us-east-1:267336882952:key/86142d40-3d1f-41db-8888-fbbe3c5f3b7d
+          created_at: "2025-03-20T12:52:17Z"
+          enc: AQICAHipK5tjFE2ZUAAfaoFHRFZoFM/xI99JONwPCQnbTDWtBwE5qnIJorEJItgslWwYSNlHAAAAfjB8BgkqhkiG9w0BBwagbzBtAgEAMGgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMR2DAfB/QoBTAhHh+AgEQgDsgtgAt80/ehlLxux931Z4/5KpD1e5jVwDduc6fHH+xzrlG1IPczGLzIlsP++7obRsqZCH4zPX7R9HPbw==
+          aws_profile: ""
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2025-03-20T12:52:18Z"
+    mac: ENC[AES256_GCM,data:Y9mDuv8ny+NhKFKm+TJUp+VJvoiwuL2SN1FzoqEvQmsICGrdx4r0Wo24OCOc7key/d4jXbiLkmEkAPr+f6JMLz5fYPGk3mYu63WcdZgbcUUGuZRdcjyxBkVAuKNNraViwryCTSCE1n0b3X3JWUxu3Dh21eIxWV5glDSH0Jvi+Fc=,iv:oDwrZjf1HPK/ZOisecB5negbdN8hcm56lgnBn1ax+oA=,tag:OriwGoImjwFyhiOmicNH/w==,type:str]
+    pgp: []
+    encrypted_regex: ^(remoteWrite\.basicAuth\.(username|password)|username|password|auth)$
+    version: 3.9.4
