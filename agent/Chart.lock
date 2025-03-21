@@ -1,0 +1,6 @@
+dependencies:
+- name: observe-agent
+  repository: https://registry.devopsnow.io/chartrepo/public
+  version: 0.1.82
+digest: sha256:5ab908ffef02d8c7c91cd7bfe21aa4ec80a1d7294784cdddf27b327dfe65d149
+generated: "2025-03-21T14:49:14.250079+05:30"
